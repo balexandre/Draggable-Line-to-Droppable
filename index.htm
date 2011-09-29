@@ -1,0 +1,183 @@
+<!--
+**
+** Part of StackOverflow Answer 
+**	http://stackoverflow.com/questions/536676/how-to-draw-a-line-between-draggable-and-droppable
+**
+** Created and Maintained by Bruno Alexandre (balexandre.com) 
+**
+** Last Edit: 29 September 2011
+**
+**-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Lines between Draggable and Droppable</title>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css"
+        rel="stylesheet" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/1.5.2/raphael-min.js"></script>
+    <!--[if IE]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+    <script src="scripts.js"></script>
+    <style>
+        article, aside, figure, footer, header, hgroup, menu, nav, section { display: block; }        
+        body { font-family: Arial; font-size: 11px; }
+        #svgbasics { position: absolute; left: 0px; top: 0px; border: solid 0px #484; z-index: -100; }
+        .draggable { }
+        .droppable { }
+    </style>
+</head>
+<body id="body">
+    <div id="svgbasics">
+    </div>
+    <p>
+        <strong>The objective is</strong> to MAP the persons from the left to the persons
+        to the right. Once the link is set, the same person canot have multiple sources
+        or targets. The target can only accept one person to be linked to.</p>
+    </p>
+    <div id="pnlAllIn" style="z-index: 10;">
+        <div>
+            <table cellspacing="5" cellpadding="40" style="width: 100%; text-align: center;">
+                <tbody>
+                    <tr>
+                        <td style="width: 50%; vertical-align: top;">
+                            <div style="border: 2px solid gray; padding: 10px; width: 320px; margin-bottom: 10px;"
+                                class="ui-corner-all draggable ui-draggable" id="wrapper">
+                                <table cellspacing="0" cellpadding="0" style="width: 100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 50px; text-align: center;" rowspan="2">
+                                                <img alt="" src="icons/user-48x48.png" />
+                                            </td>
+                                            <td style="font-size: 1.2em; font-weight: bold; text-align: left;">
+                                                01. Richard Fields
+                                            </td>
+                                            <td style="text-align: right; vertical-align: top; width: 16px;" rowspan="2">
+                                                <span class="ui-icon-arrow-4 ui-icon"></span><span class="ui-icon-shuffle ui-icon">
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 0.9em; text-align: left;">
+                                                Chief Inspector
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <input type="hidden" value="01" />
+                            </div>
+                            <div style="border: 2px solid gray; padding: 10px; width: 320px; margin-bottom: 10px;"
+                                class="ui-corner-all draggable ui-draggable" id="wrapper2">
+                                <table cellspacing="0" cellpadding="0" style="width: 100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 50px; text-align: center;" rowspan="2">
+                                                <img alt="" src="icons/user-48x48.png" />
+                                            </td>
+                                            <td style="font-size: 1.2em; font-weight: bold; text-align: left;">
+                                                02. Katherine Love
+                                            </td>
+                                            <td style="text-align: right; vertical-align: top; width: 16px;" rowspan="2">
+                                                <span class="ui-icon-arrow-4 ui-icon"></span><span class="ui-icon-shuffle ui-icon">
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 0.9em; text-align: left;">
+                                                Saleschief / Consultant
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <input type="hidden" value="02" />
+                            </div>
+                        </td>
+                        <td style="vertical-align: top;">
+                            <div style="border: 2px solid gray; padding: 5px; width: 340px; margin-bottom: 10px;"
+                                class="ui-corner-all droppable ui-droppable " id="wrapper3">
+                                <table cellspacing="3" cellpadding="0" style="width: 100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 50px; text-align: center;" rowspan="2">
+                                                <img alt="" src="icons/user-48x48.png" />
+                                            </td>
+                                            <td style="font-size: 1.2em; font-weight: bold; text-align: left;">
+                                                10. Marie Christopher
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 0.9em; text-align: left;">
+                                                Developer
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <input type="hidden" value="10" />
+                            </div>
+                            <div style="border: 2px solid gray; padding: 5px; width: 340px; margin-bottom: 10px;"
+                                class="ui-corner-all droppable ui-droppable" id="wrapper4">
+                                <table cellspacing="3" cellpadding="0" style="width: 100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 50px; text-align: center;" rowspan="2">
+                                                <img alt="" src="icons/user-48x48.png" />
+                                            </td>
+                                            <td style="font-size: 1.2em; font-weight: bold; text-align: left;">
+                                                11. Elsa Rodriguez
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 0.9em; text-align: left;">
+                                                Technician
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <input type="hidden" value="11" />
+                            </div>
+                            <div style="border: 2px solid gray; padding: 5px; width: 340px; margin-bottom: 10px;"
+                                class="ui-corner-all droppable ui-droppable" id="wrapper5">
+                                <table cellspacing="3" cellpadding="0" style="width: 100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 50px; text-align: center;" rowspan="2">
+                                                <img alt="" src="icons/user-48x48.png" />
+                                            </td>
+                                            <td style="font-size: 1.2em; font-weight: bold; text-align: left;">
+                                                13. Katherine Love
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 0.9em; text-align: left;">
+                                                Saleschief / Consultant
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <input type="hidden" value="13" />
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="dialog" title="Reset persons mapping?" style="z-index: 10;">
+        <p>
+            <span class="ui-icon ui-icon-alert"></span>Do you wish to delete all connection
+            resetting the mapping to it's original positions?</p>
+    </div>
+    <div id="dialogMappingResult" title="Current Mapping" style="z-index: 10;">
+        <p>
+            Here is a list of the current mapping:
+        </p>
+        <ul style="list-style: none;">
+            <li>No mapping was done yet</li></ul>
+    </div>
+    <a id="popButton" href="#" style="z-index: 10;">reset mapping</a> <a id="getMappings"
+        href="#" style="z-index: 10;">show mapping</a>
+</body>
+</html>
