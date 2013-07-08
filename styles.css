@@ -1,0 +1,47 @@
+/*
+**
+** Part of StackOverflow Answer 
+**  http://stackoverflow.com/questions/536676/how-to-draw-a-line-between-draggable-and-droppable
+**
+** Created and Maintained by Bruno Alexandre (balexandre.com) 
+**
+** GIT REPO at https://github.com/balexandre/Draggable-Line-to-Droppable
+**
+** Last Edit: 08 July 2013
+**
+*/
+
+article, aside, figure, footer, header, hgroup, menu, nav, section { display: block; }        
+body { font-family: Arial; font-size: 11px; }
+ul { list-style: none; }
+
+#svgbasics { 
+  position: absolute; left: 0px; top: 0px; 
+  border: solid 0px #484; z-index: -100; 
+}
+
+.draggable { cursor: pointer; }
+.droppable { }  
+
+
+#pnlAllIn, #dialog, #dialogMappingResult,
+#popButton, #getMappings { 
+  z-index: 10;
+}
+#pnlAllIn {
+  margin: 20px; 
+}
+
+#leftPanel, #rightPanel {
+  width: 400px;
+  float: left;
+}
+
+/* Persons */
+.person { width: 300px; padding: 10px; border: 1px red solid; margin: 10px 0; }
+.person ul.buttons { float:right; }
+.person ul.name { margin-left: 20px; }
+.person ul.name h2 { margin-bottom: 0; }
+.person img { float:left; }
+
+.clearfix { clear: both; }
